@@ -9,6 +9,7 @@ python:
 # setup environment
 before_install:
   - virtualenv venv
+  - rm .env.local
   - source .env
 # command to install dependencies
 install: "pip install requests"
