@@ -25,8 +25,8 @@ class RegisterServiceTestCase(unittest.TestCase):
     """Tests for `ServicePublisher.register_service()."""
 
     def setUp(self):
-        self.service_name = 'lw-test'
-        self.endpoint = 'https://logistics-wizard-test.mybluemix.net'
+        self.service_name = 'test-service'
+        self.endpoint = 'https://test-service-discovery.mybluemix.net'
 
     def test_register_service_success(self):
         """With correct values, is the service registered?"""
@@ -84,8 +84,8 @@ class HeartbeatServiceTestCase(unittest.TestCase):
     """Tests for ServicePublisher.heartbeat_service()."""
 
     def setUp(self):
-        self.service_name = 'lw-test'
-        self.endpoint = 'https://logistics-wizard-test.mybluemix.net'
+        self.service_name = 'test-service'
+        self.endpoint = 'https://test-service-discovery.mybluemix.net'
 
     def test_heartbeat_service_success(self):
         """With correct values, is the service heartbeated?"""
@@ -129,7 +129,7 @@ class DeregisterServiceTestCase(unittest.TestCase):
     """Tests for ServicePublisher.deregister_service()."""
 
     def setUp(self):
-        self.publisher = ServicePublisher('lw-test', 300, 'UP', 'https://logistics-wizard-test.mybluemix.net', 'http',
+        self.publisher = ServicePublisher('test-service', 300, 'UP', 'https://test-service-discovery.mybluemix.net', 'http',
                                           url=env['SD_URL'], auth_token=env['SD_AUTH'])
         self.publisher.register_service(False)
 

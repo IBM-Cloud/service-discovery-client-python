@@ -23,13 +23,13 @@ class GetServicesTestCase(unittest.TestCase):
 
     def setUp(self):
         # Register two services
-        self.publisher_1 = ServicePublisher('lw-test1', 300, 'UP',
-                                            'https://logistics-wizard-test1.mybluemix.net', 'http',
-                                            tags=['lw-test'], url=env['SD_URL'], auth_token=env['SD_AUTH'])
+        self.publisher_1 = ServicePublisher('test-service-1', 300, 'UP',
+                                            'https://test-service-discovery.mybluemix.net', 'http',
+                                            tags=['test'], url=env['SD_URL'], auth_token=env['SD_AUTH'])
         self.publisher_1.register_service(False)
-        self.publisher_2 = ServicePublisher('lw-test2', 300, 'UP',
-                                            'https://logistics-wizard-test2.mybluemix.net', 'http',
-                                            tags=['lw-test', 'db'], url=env['SD_URL'], auth_token=env['SD_AUTH'])
+        self.publisher_2 = ServicePublisher('test-service-2', 300, 'UP',
+                                            'https://test-service-discovery.mybluemix.net', 'http',
+                                            tags=['test', 'db'], url=env['SD_URL'], auth_token=env['SD_AUTH'])
         self.publisher_2.register_service(False)
 
     def test_get_services_success(self):
@@ -57,13 +57,13 @@ class GetServicesTestCase(unittest.TestCase):
             self.assertTrue(instance.get('status') is None)
 
         # Test the 'tags' filter
-        services = loads(locator.get_services(tags='lw-test')).get('instances')
+        services = loads(locator.get_services(tags='test')).get('instances')
         service_ids = [self.publisher_1.id, self.publisher_2.id]
         for instance in services:
             self.assertIn(instance.get('id'), service_ids)
 
         # Test the 'service_name' filter
-        services = loads(locator.get_services(service_name='lw-test1')).get('instances')
+        services = loads(locator.get_services(service_name='test-service-1')).get('instances')
         for instance in services:
             self.assertEqual(instance.get('id'), self.publisher_1.id)
 
