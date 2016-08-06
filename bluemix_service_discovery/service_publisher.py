@@ -2,7 +2,7 @@ import json
 import time
 from requests import request
 from threading import Thread
-from utils import load_credentials
+from bluemix_service_discovery.utils import load_credentials
 from bluemix_service_discovery import exceptions
 
 

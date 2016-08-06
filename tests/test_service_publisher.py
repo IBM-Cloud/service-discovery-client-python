@@ -1,5 +1,4 @@
 import unittest
-from types import StringType
 from json import loads
 from os import environ as env
 from bluemix_service_discovery.service_publisher import ServicePublisher, exceptions
@@ -92,7 +91,7 @@ class HeartbeatServiceTestCase(unittest.TestCase):
         publisher = ServicePublisher(self.service_name, 300, 'UP', self.endpoint, 'http',
                                      url=env['SD_URL'], auth_token=env['SD_AUTH'])
         publisher.register_service(False)
-        self.assertIsInstance(publisher.heartbeat_service(), StringType)
+        self.assertIsInstance(publisher.heartbeat_service(), str)
         publisher.deregister_service()
 
     def test_heartbeating_success(self):

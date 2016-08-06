@@ -1,6 +1,6 @@
 import json
 from requests import request
-from utils import load_credentials, add_query_string
+from bluemix_service_discovery.utils import load_credentials, add_query_string
 from bluemix_service_discovery import exceptions
 
 
